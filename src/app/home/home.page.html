@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Cesta Fácil
+    </ion-title>
+    <ion-icon class="cartt" slot="end" size="large" name="cart" [routerLink]="['/carrinho']"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Selecionar supermercado -->
+  <ion-row>
+    <ion-col size="12" size-md>
+      <ion-item class="arre">
+        <ion-icon class="fundowhite" name="cart"></ion-icon>
+        <ion-label class="fundowhite"> &nbsp; Seu supermercado escolhido é</ion-label>
+        <ion-select (ionChange)="grita()" [selectedText]="selectcategory" [(ngModel)]="selectcategory" ok-text="Ok" cancel-text="Voltar" class="fundowhite" placeholder="Escolha um">
+          <ion-select-option value="Carrefour" >Carrefour</ion-select-option>
+          <ion-select-option value="Vianense">Vianense</ion-select-option>
+          <ion-select-option value="Guanabara" selected>Guanabara</ion-select-option>
+          <ion-select-option value="Extra">Extra</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- card -->
+
+  <!--barnner-->
+  <div class="containerex">
+    <div class="image">
+      <div class="texto">
+        <h1>Descontos exclusivos!</h1>
+        <p>Você pode selecionar os produtos que mais tem interesse e com base nisso o aplicativo trará descontos
+          exclusivos nesses produtos, quanto mais você comprar mais chance de ganhar descontos.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- array mercado -->
+
+  <ion-row *ngIf="lojas$ | async as lojas">
+    <ion-col size="6" size-md *ngFor="let p of lojas">
+      <ion-card class="card">
+        <ion-img [src]="p.img"></ion-img>
+        <ion-card-header>
+          <ion-card-title id="nome">{{p.nome}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <h1 class="preco">R$ {{p.preco}}</h1>
+        </ion-card-content>
+        <ion-button color="danger" expand="block" (click)="addCar(id, p)" (click)="presentToastWithOptions()" >+ Carrinho</ion-button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

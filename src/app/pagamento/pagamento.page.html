@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pagamento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-row>
+    <ion-col size="12" size-md>
+      <ion-item class="arre">
+        <ion-icon class="fundowhite" name="cash"></ion-icon>
+        <ion-label class="fundowhite"> &nbsp; Forma de Pagamento</ion-label>
+      </ion-item>
+      <ion-button color="danger" [routerLink]="['/cartao']" expand="block">inserir dados do cartão</ion-button>
+    </ion-col>
+   </ion-row>
+
+</ion-content>
